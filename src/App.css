@@ -1,0 +1,47 @@
+.App {
+  text-align: center;
+}
+
+.App-header {
+  padding: 20px;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.todos-list {
+  padding-left: 0;
+  list-style-type: none;
+}
+
+.todo {
+  height: 40px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  border-bottom: 1px solid #ededed
+}
+
+.todo .done {
+  text-decoration: line-through;
+}
+
+.footer {
+  display: flex;
+  color: #777;
+  padding: 10px 15px;
+  height: 20px;
+  text-align: center;
+}
+
+.filters {
+  display: flex;
+  justify-content: space-around;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  position: absolute;
+  right: 0;
+  left: 0;
+}
