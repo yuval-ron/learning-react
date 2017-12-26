@@ -16,9 +16,13 @@ export default class Todo extends Component {
 
     return (
       <li className="todo">
-        <input type="checkbox" checked={todo.isDone} onChange={this.onChangeIsDone} />
+        {todo.isDone ?
+          <div className="checkbox done" onClick={this.onChangeIsDone}></div>
+          :
+          <div className="checkbox" onClick={this.onChangeIsDone}></div>
+        }
         <span className={todo.isDone ? 'done' : ''}>{todo.title}</span>
-        <button className="delete" onClick={this.deleteTodo}>X</button>
+        <div className="delete" onClick={this.deleteTodo}>X</div>
       </li>
     )
   }

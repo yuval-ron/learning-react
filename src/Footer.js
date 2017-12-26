@@ -5,31 +5,29 @@ export default class Footer extends Component {
     const {todos} = this.props
     const activeTodosLength = Object.values(todos).filter(todo => !todo.isDone).length
 
-     return <div>{activeTodosLength} items left</div>
+     return <div className="message">{activeTodosLength} items left</div>
   }
 
    onChangeֿTab = (e) => {
     const {changeTab} = this.props
-    const activeTab = e.target.className
+    const activeTab = e.target.id
 
     changeTab(activeTab)
   }
   render() {
     const {mode} = this.props
+
     return (
       <div>
         <footer className="footer">
           {this.renderMessage()}
           <ul className="filters">
-            <li className="all" onClick={this.onChangeֿTab.bind(this)}>All</li>
-            <li className="active" onClick={this.onChangeֿTab.bind(this)}>Active</li>
-            <li className="completed" onClick={this.onChangeֿTab.bind(this)}>Completed</li>
-           </ul>
+            <li id="all" className={`tab ${mode === "all" ? 'active' : ''}`} onClick={this.onChangeֿTab}>All</li>
+            <li id="active" className={`tab ${mode === "active" ? 'active' : ''}`} onClick={this.onChangeֿTab}>Active</li>
+            <li id="completed" className={`tab ${mode === "completed" ? 'active' : ''}`} onClick={this.onChangeֿTab}>Completed</li>
+          </ul>
         </footer>
       </div>
     )
   }
 }
-//<li className={`all ${mode === "all" ? 'activeTab' : ''}`} onClick={this.onChangeֿTab.bind(this)}>All</li>
-          //  <li className={`active ${mode === "active" ? 'activeTab' : ''}`} onClick={this.onChangeֿTab.bind(this)}>Active</li>
-            //<li className={`completed ${mode === "completed" ? 'activeTab' : ''}`} onClick={this.onChangeֿTab.bind(this)}>Completed</li>
