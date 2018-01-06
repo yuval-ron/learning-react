@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux'
+
+import {changeActiveTab} from './store/actions/appActions'
 import NewTodoForm from './NewTodoForm';
 import TodosList from './TodosList';
 import Footer from './Footer';
 import './App.css';
 
-export default class App extends Component {
+class App extends Component {
   componentWillMount() {
-    const {getTodos} = this.props
-    this.setState({ todos: getTodos(), mode: "all" })
+    const {getTodos, mode} = this.props
+    this.setState({ todos: getTodos(), mode })
   }
 
   addTodo = (todo) => {
@@ -47,11 +50,13 @@ export default class App extends Component {
   }
 
   changeTab = (activeTab) => {
-    this.setState({ mode: activeTab })
+    const {dispatch} = this.props
+    dispatch(changeActiveTab(activeTab))
   }
 
   renderTodosList() {
-    const {todos, mode} = this.state
+    const {mode} = this.props
+    const {todos} = this.state
 
     if (this.state.todos) {
       return (
@@ -61,7 +66,8 @@ export default class App extends Component {
   }
 
   render() {
-    const {todos, mode} = this.state
+    const {mode} = this.props
+    const {todos} = this.state
 
     return (
       <div className="App">
@@ -76,3 +82,9 @@ export default class App extends Component {
   }
 }
 
+export default connect((store) => {
+  return {
+    mode: store.app.mode,
+    // todos: store.todos.collection
+  }
+})(App)
